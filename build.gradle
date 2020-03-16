@@ -1,0 +1,58 @@
+plugins {
+	id 'org.springframework.boot' version '2.2.5.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+	id 'java'
+}
+
+group = 'com.cap'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+	developmentOnly
+	runtimeClasspath {
+		extendsFrom developmentOnly
+	}
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+	jcenter()
+    maven { url 'http://oss.jfrog.org/artifactory/oss-snapshot-local/'}
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-data-rest'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.0'
+	compile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.1'
+	compile group: 'io.springfox', name: 'springfox-swagger2', version: '3.0.0-SNAPSHOT'
+    compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '3.0.0-SNAPSHOT'
+    compile group: 'io.springfox', name: 'springfox-data-rest', version: '3.0.0-SNAPSHOT'
+    //compile group: 'org.springframework.plugin', name: 'spring-plugin-core', version: '2.0.0.RELEASE' 
+	compileOnly 'org.projectlombok:lombok:1.18.12'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	
+	runtimeOnly 'mysql:mysql-connector-java'
+	annotationProcessor 'org.projectlombok:lombok:1.18.12'
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+	
+	testCompileOnly 'org.projectlombok:lombok:1.18.12'
+	testAnnotationProcessor 'org.projectlombok:lombok:1.18.12'
+			
+	// Testing 
+	//testCompile group: 'org.springframework', name: 'spring-test', version: '2.5'
+	//testCompile group: 'io.rest-assured', name: 'spring-mock-mvc', version: '3.0.0'
+		
+	//testCompile "org.springframework.boot:spring-boot-starter-test" 
+}
+
+test {
+	useJUnitPlatform()
+}
