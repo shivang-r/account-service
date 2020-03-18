@@ -5,8 +5,9 @@ plugins {
 }
 
 group = 'com.cap'
-version = '0.0.1-SNAPSHOT'
+version = '1.0'
 sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
 
 configurations {
 	developmentOnly
@@ -53,6 +54,6 @@ dependencies {
 	//testCompile "org.springframework.boot:spring-boot-starter-test" 
 }
 
-test {
-	useJUnitPlatform()
-}
+//test {
+//	useJUnitPlatform()
+//}
